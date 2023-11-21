@@ -1,0 +1,34 @@
+
+{% load static %}
+<nav class="navbar navbar-expand bg-body-tertiary sticky-top" data-bs-theme="dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'about' %}">
+        <img src="{% static 'website/img/python-logo-only.png' %}" width=auto height="40px" alt="python logo" title="About the school">
+      </a>
+      <a class="navbar-brand ms-2 fs-4" href="{% url 'about' %}">Online Python School</a>
+      {% if selected_topic %}
+        <span class="border-start border-white border-3 navbar-brand ms-3 ps-4 fs-4">
+          {{ selected_topic.topic_name }}
+        </span>
+      {% endif %}
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse  dropstart" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown border border-secondary border-2 rounded">
+            <a class="nav-link dropdown-toggle fs-4" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Topics
+            </a>
+            <ul class="dropdown-menu">
+              {% for topic in all %}
+                <li><a class="dropdown-item" href="{% url 'index' %}?topicId={{ topic.id }}" name="topicId" id="{{ topic.id }}">{{ topic.topic_name }}</a></li>
+              {% empty %}
+                <li>There are no topics available...</li>
+              {% endfor %}
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>

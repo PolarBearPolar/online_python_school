@@ -1,0 +1,40 @@
+version: "3.1"
+services:
+
+ database:
+  image: database:1.0
+  build: ./database
+  container_name: database
+  environment:
+   - POSTGRES_USER=admin
+   - POSTGRES_PASSWORD=admin
+   - POSTGRES_DB=online_python_school
+  volumes:
+   - ./database/database:/var/lib/postgresql/data
+  ports:
+   - 5434:5432
+  restart: unless-stopped
+  networks:
+   - net
+
+ webapp:
+  image: webapp:1.0
+  build: ./online_python_school
+  container_name: webapp
+  environment:
+   - PG_DB=online_python_school
+   - PG_USER=admin
+   - PG_PASSWORD=admin
+   - PG_HOST=database
+   - PG_PORT=5432
+  volumes:
+   - ./online_python_school:/online_python_school
+  ports:
+   - 8000:8000
+  restart: unless-stopped
+  networks:
+   - net
+
+networks:
+ net:
+  name: net

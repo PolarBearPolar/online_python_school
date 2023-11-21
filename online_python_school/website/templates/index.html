@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    {% if selected_topic %}
+        <h1>{{ selected_topic.topic_name }}</h1>
+        {% autoescape off %}
+            {{ selected_topic.topic_text }}
+        {% endautoescape %}
+        <hr/>
+        <h1>Tasks</h1>
+        {% autoescape off %}
+            {{ selected_topic.topic_task }}
+        {% endautoescape %}
+        <hr/>
+        <h1>Python Online Editor</h1>
+        <textarea id="pythonEditor"># Your code here...</textarea>
+        <br/>
+        <button type="button" class="btn btn-outline-dark" id="runCodeBtn">Run code</button>
+        <br/>
+        <br/>
+        <pre>
+            <code class="language-python" id="editorOutput">
+                # Output here...
+            </code>
+        </pre>
+        <script src="{% static 'website/codemirror/lib/codemirror.js' %}"></script>
+        <link rel="stylesheet" type="text/css" href="{% static 'website/codemirror/lib/codemirror.css' %}">
+        <script src="{% static 'website/codemirror/mode/python/python.js' %}"></script>
+        <link rel="stylesheet" type="text/css" href="{% static 'website/codemirror/theme/darcula.css' %}">
+        <script src="{% static 'website/script/python_editor.js' %}" type="text/javascript"></script>
+        <script type="text/javascript">
+            initPythonEditor("pythonEditor");
+            executePythonCode("runCodeBtn", "editorOutput", "{{ csrf_token }}");
+        </script>
+    {% endif %}
+{% endblock %}
