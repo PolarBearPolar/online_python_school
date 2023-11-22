@@ -1,6 +1,6 @@
 # online_python_school
 This an online Python school project created mainly with Django. This school has multiple topics with explanations, examples, tasks and an online Python editor.
-##Application Design Structure
+## Application Design Structure
 ![image](https://github.com/PolarBearPolar/online_python_school/assets/88388315/2da286d1-4e46-4511-bac3-1d2412f89fd2)
 - The studying material of the school is split into multiple topics
 - Topics can be chosen from the top-right dropdown element called **Topics**
