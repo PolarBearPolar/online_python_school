@@ -11,3 +11,13 @@ This an online Python school project created mainly with Django. This school has
 ![image](https://github.com/PolarBearPolar/online_python_school/assets/88388315/fc71161e-a53f-449f-abe4-741d337344e3)
 - The online Python editor can be run directly on the website so there is no need to install Python when solving simple tasks
 ![image](https://github.com/PolarBearPolar/online_python_school/assets/88388315/f89ada37-8d15-4c32-8f9d-71e81bb79621)
+## In order to test/use it:
+- Make sure you have Docker installed
+- Make sure ports **8000** and **5434** are not used on your local machine
+- Clone the repository to any directory on your local machine
+- **cd** into the directory that contains the cloned repo in command line and run the following command there
+```
+docker-compose -f online_python_school.yml up
+```
+- Wait until all containers are up and running (it usually takes approximately 1-2 minutes)
+- Open a browser and go to **localhost:8000**
